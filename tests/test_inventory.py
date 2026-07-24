@@ -1,3 +1,4 @@
+from playwright.sync_api import expect
 from pages.inventory_page import InventoryPage
 from utils.data_loader import load_test_data
 
@@ -15,4 +16,5 @@ def test_inventory_products_count(login_page):
     inventory_page = InventoryPage(
         login_page.page)
     
-    assert inventory_page.get_products_count() == 6
+    expect(inventory_page.inventory_items_locator()
+           ).to_have_count(6)

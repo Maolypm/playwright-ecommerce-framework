@@ -16,3 +16,6 @@ class CartPage:
 
     def open_cart(self):
         self.page.click(".shopping_cart_link")
+
+    def cart_badge_locator(self):
+        return self.page.locator(self.cart_badge)

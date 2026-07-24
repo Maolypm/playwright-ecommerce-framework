@@ -2,6 +2,7 @@ import json
 from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
 from utils.data_loader import load_test_data
+from playwright.sync_api import expect
 
 def test_complete_checkout(login_page):
 
@@ -31,5 +32,5 @@ def test_complete_checkout(login_page):
         checkout_data["customer"]["postal_code"]
     )
 
-    assert (checkout_page.get_confirmation_text() == 
-            "Thank you for your order!")
+    expect(checkout_page.confirmation_locator()
+           ).to_have_text("Thank you for your order!")

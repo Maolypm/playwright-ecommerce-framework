@@ -18,3 +18,6 @@ class CheckoutPage:
 
     def get_confirmation_text(self):
         return self.page.locator(".complete-header").inner_text()
+
+    def confirmation_locator(self):
+        return self.page.locator(".complete-header")

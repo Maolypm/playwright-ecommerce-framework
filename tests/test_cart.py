@@ -1,3 +1,4 @@
+from playwright.sync_api import expect
 from pages.cart_page import CartPage
 from utils.data_loader import load_test_data
 
@@ -16,4 +17,5 @@ def test_add_product_to_cart(login_page):
 
     cart_page.add_backpack_to_cart()
 
-    assert cart_page.get_cart_count() == "1"
+    expect(cart_page.cart_badge_locator()
+           ).to_have_text("1")

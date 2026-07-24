@@ -10,3 +10,6 @@ class InventoryPage:
         return self.page.locator(
             self.inventory_items
         ).count()
+
+    def inventory_items_locator(self):
+        return self.page.locator(self.inventory_items)

@@ -1,4 +1,4 @@
-from playwright.sync_api import Page
+from playwright.sync_api import Page, expect
 from pages.login_page import LoginPage
 from utils.data_loader import load_test_data
 
@@ -13,4 +13,5 @@ def test_valid_login(login_page):
         test_data["valid_user"]["password"]
     )
 
-    assert "inventory" in login_page.page.url
+    expect(login_page.page).to_have_url(
+        "https://www.saucedemo.com/inventory.html")
