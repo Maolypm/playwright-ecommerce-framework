@@ -1,5 +1,6 @@
 import pytest
 from pages.login_page import LoginPage
+from playwright.sync_api import APIRequestContext
 
 @pytest.fixture
 def login_page(page, request):
@@ -17,3 +18,11 @@ def pytest_runtest_makereport(item, call):
     report = outcome.get_result()
 
     setattr(item, "rep_" + report.when, report)
+
+@pytest.fixture
+def api_context(playwright):
+    request_context = playwright.request.new_context(
+        base_url="https://dummyjson.com"
+    )
+    yield request_context
+    request_context.dispose()
