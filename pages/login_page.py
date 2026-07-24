@@ -15,3 +15,7 @@ class LoginPage:
         self.page.fill(self.username_input, username)
         self.page.fill(self.password_input, password)
         self.page.click(self.login_button)
+
+    @property
+    def error_message(self):
+        return self.page.locator('[data-test="error"]')
