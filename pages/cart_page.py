@@ -13,3 +13,6 @@ class CartPage:
         return self.page.locator(
             self.cart_badge
         ).inner_text()
+
+    def open_cart(self):
+        self.page.click(".shopping_cart_link")
